@@ -1,63 +1,60 @@
 import java.util.Scanner;
 
 public class ComplexCode {
-    
+
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Complex Code!");
         System.out.println("Enter your choice:");
-        System.out.println("1. Addition");
-        System.out.println("2. Subtraction");
-        System.out.println("3. Multiplication");
-        System.out.println("4. Division");
+        System.out.println("1. Operations");
+        System.out.println("2. Exit");
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
-                performOperation("addition");
+                performOperations();
                 break;
             case 2:
-                performOperation("subtraction");
-                break;
-            case 3:
-                performOperation("multiplication");
-                break;
-            case 4:
-                performOperation("division");
+                System.out.println("Exiting...");
                 break;
             default:
                 System.out.println("Invalid choice!");
         }
-        scanner.close();
     }
-    
-    public static void performOperation(String operation) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter first number:");
-        int num1 = scanner.nextInt();
-        System.out.println("Enter second number:");
-        int num2 = scanner.nextInt();
-        int result = 0;
+
+    public static void performOperations() {
+        System.out.println("How many operations do you want to perform?");
+        int numOperations = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+        for (int i = 0; i < numOperations; i++) {
+            System.out.println("Enter operation " + (i + 1) + ":");
+            String operation = scanner.nextLine();
+            System.out.println("Enter first number:");
+            int num1 = scanner.nextInt();
+            System.out.println("Enter second number:");
+            int num2 = scanner.nextInt();
+            int result = calculate(operation, num1, num2);
+            System.out.println("Result: " + result);
+        }
+    }
+
+    public static int calculate(String operation, int num1, int num2) {
         switch (operation) {
             case "addition":
-                result = num1 + num2;
-                break;
+                return num1 + num2;
             case "subtraction":
-                result = num1 - num2;
-                break;
+                return num1 - num2;
             case "multiplication":
-                result = num1 * num2;
-                break;
+                return num1 * num2;
             case "division":
                 if (num2 == 0) {
                     System.out.println("Cannot divide by zero!");
-                    return;
+                    return 0;
                 }
-                result = num1 / num2;
-                break;
+                return num1 / num2;
             default:
                 System.out.println("Invalid operation!");
+                return 0;
         }
-        System.out.println("Result: " + result);
-        scanner.close();
     }
 }
