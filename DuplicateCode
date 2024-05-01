@@ -1,0 +1,18 @@
+public class DuplicateCode {
+
+    public static void main(String[] args) {
+        performTask("task1");
+        performTask("task2");
+    }
+
+    public static void performTask(String taskName) {
+        System.out.println("Starting task: " + taskName);
+        // Duplicate block starts
+        System.out.println("Step 1 for " + taskName);
+        System.out.println("Starting task: " + taskName);
+        // Duplicate block ends
+        System.out.println("Task completed: " + taskName);
+        System.out.println("Starting task: " + taskName);
+        System.out.println("Starting task: " + taskName);
+    }
+}
